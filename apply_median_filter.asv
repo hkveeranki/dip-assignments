@@ -1,7 +1,0 @@
-function res = apply_median_filter(img, win_size)
-res = uint8(zeros(size(img)));
-lim = floor(win_size / 2);
-n = 
-img = padarray(img, [lim,lim]);
-for i = 1:n
-end

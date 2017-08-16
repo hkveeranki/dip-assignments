@@ -11,4 +11,5 @@ for i = 1:win_size
         filter(i,j) = exp(-pow) / den;
     end
 end
+filter = filter / (sum(filter(:)));
 end
