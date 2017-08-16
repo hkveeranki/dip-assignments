@@ -1,17 +1,1 @@
-clear;
-clc;
-img = imread('data/blur1.jpg');
-res = img;
-C = 2.5;
-filter = laplacian_filter();
-res1 = apply_filter(img(:,:,1), filter);
-res2 = apply_filter(img(:,:,2), filter);
-res3 = apply_filter(img(:,:,3), filter);
-res(:,:,1) = res1;
-res(:,:,2) = res2;
-res(:,:,3) = res3;
-figure;
-imshow(img);
-sharp = img + 2 * res;
-figure;
-imshow(sharp);
+highboost_filter('data/blur2.jpg');
