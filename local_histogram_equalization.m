@@ -1,39 +1,20 @@
-function res = local_histogram_equalization(img, win_len,win_wid)
+function res = local_histogram_equalization(img, win_size)
 L = 255;
 res = img;
-in=0;
-mid = win_len * win_wid;
-mid = round(mid / 2);
-pad_len = 0;
-pad_wid = 0;
-for i = 1:win_len
-    for j = 1:win_wid
-        in=in+1;
-        if(in == mid)
-            pad_len = i-1;
-            pad_wid = j-1;
-            break;
-        end
-    end
-end
-img = padarray(img,[pad_len, pad_wid]);
 n = size(img, 1);
 m = size(img, 2);
-x_lim = round(n - (2*pad_len + 1));
-y_lim = round(m - (2*pad_wid + 1));
-for i = 1:x_lim
-    for j = 1:y_lim
+lim = floor(win_size / 2);
+for i = 1:n
+    for j = 1:m
         Tr = zeros(256,1);
         ind = 1;
-        ele = uint8(0);
-        for x = 1:win_len
-            for y = 1:win_wid
-                x_ind = i + x - 1;
-                y_ind = j + y - 1;
-                if(ind == mid)
-                    ele = img(x_ind, y_ind) + 1;
-                end
-                val = img(x_ind, y_ind) + 1;
+        x_start = max(1, i - lim);
+        x_end = min(n, i + lim);
+        y_start = max(1, j - lim);
+        y_end = min(m, j + lim);
+        for x = x_start:x_end
+            for y = y_start:y_end
+                val = img(x, y) + 1;
                 Tr(val) = Tr(val) + 1;
                 ind = ind + 1;
             end
@@ -41,7 +22,7 @@ for i = 1:x_lim
         for c = 2:256
             Tr(c) = Tr(c-1) + Tr(c);
         end
-        res(i,j) = floor((Tr(ele) / (pad_len * pad_wid)) * 255 + 0.5);
+        res(i, j) = floor((Tr(img(i, j) + 1) / (win_size * win_size)) * 255 + 0.5);
     end
 end
 end
