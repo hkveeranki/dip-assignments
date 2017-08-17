@@ -1,5 +1,5 @@
-img = imread('data/bell.jpg');
-filter = gaussian_filter(5, 1.76);
+img = imread('data/portraits2.jpg');
+filter = gaussian_filter(7, 1.76);
 res = img;
 res1 = apply_filter(img(:,:,1), filter);
 res2 = apply_filter(img(:,:,2), filter);
