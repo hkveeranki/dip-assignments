@@ -1,0 +1,18 @@
+img = imread('data\stereo1.png');
+imshow(img);
+[inp_x inp_y] = ginput(4);
+img = imread('data\stereo2.png');
+imshow(img);
+[out_x out_y] = ginput(4);
+close all;
+out = [out_x'; out_y'];
+in = [inp_x'; inp_y'];
+mat = homography_matrix(in, out);
+img = imread('data\stereo1.png');
+res1 = apply_transform(img(:, :, 1), mat); 
+res2 = apply_transform(img(:, :, 2), mat); 
+res3 = apply_transform(img(:, :, 3), mat);
+res(:, :, 1) = res1;
+res(:, :, 2) = res2;
+res(:, :, 3) = res3;
+imshow(res);
