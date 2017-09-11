@@ -10,7 +10,6 @@ H_c = -[inp_x; inp_y; ones(1, n)];
 H_x = [H_c; zeros_mat; out_x.*inp_x; out_x.*inp_y; out_x];
 H_y = [zeros_mat; H_c; out_y.*inp_x; out_y.*inp_y; out_y];
 H = [H_x H_y];
-[U tmp1 tmp2] = svd(H);
-mat = (reshape(U(:, 9), 3, 3));
-mat = mat';
+[U s v] = svd(H);
+mat = (reshape(U(:, 9), 3, 3)).';
 end

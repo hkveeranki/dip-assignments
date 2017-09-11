@@ -1,6 +1,6 @@
 img = imread('data/Einstein.jpg');
 res = img;
-win_size = 2;
+win_size = 7;
 res1 = apply_median_filter(img(:,:,1),win_size);
 res2 = apply_median_filter(img(:,:,2), win_size);
 res3 = apply_median_filter(img(:,:,3), win_size);

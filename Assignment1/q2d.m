@@ -1,6 +1,6 @@
 clear;
 clc;
-img = imread('data/portraits.jpg');
+img = imread('data/portraits2.jpg');
 f_sigma = 10;
 g_sigma = 10;
 win_size = 30;
