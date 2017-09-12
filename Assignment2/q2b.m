@@ -1,0 +1,15 @@
+cutoff = 10;
+power = 2;
+img = rgb2gray(imread('sample.JPG'));
+n = size(img, 1);
+m = size(img, 2);
+ilpf = ideal_low_pass(cutoff, n, m);
+glpf = gauss_low_pass(cutoff, n, m);
+blpf = butter_low_pass(cutoff, n, m, power);
+res1 = apply_filter_fft(img, ilpf);
+res2 = apply_filter_fft(img, blpf);
+res3 = apply_filter_fft(img, glpf);
+figure;imshow(uint8(abs(img)));title('image');
+figure;imshow(uint8(abs(res1)));title('ideal low pass');
+figure;imshow(uint8(abs(res2)));title('butterworth low pass');
+figure;imshow(uint8(abs(res2)));title('gaussian low pass');
