@@ -1,0 +1,11 @@
+path = 'data\image_blending_with_laplacian_pyramid\';
+mask = imread(strcat(path,'example3\mask.png'));
+fg = imread(strcat(path,'example3\im1.png'));
+bg = imread(strcat(path,'example3\im2.png'));
+nm = zeros(size(fg));
+maxm = max(mask(:));
+nm(:, :, 1) = mask / maxm;
+nm(:, :, 2) = mask / maxm;
+nm(:, :, 3) = mask / maxm;
+mask = nm;
+res = img_blend(bg, fg, mask,@bicubic_upsample);
