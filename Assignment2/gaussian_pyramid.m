@@ -1,4 +1,5 @@
 function pyramid = gaussian_pyramid(img, levels)
+img = double(img);
 pyramid = cell(1,levels + 1);
 res = img;
 pyramid{1} = res;

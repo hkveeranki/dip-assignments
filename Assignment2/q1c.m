@@ -1,0 +1,9 @@
+mask = imread('data\image_blending_with_laplacian_pyramid\example1\mask.jpg');
+fg = imread('data\image_blending_with_laplacian_pyramid\example1\im1.jpg');
+bg = imread('data\image_blending_with_laplacian_pyramid\example1\im2.jpg');
+nm = zeros(size(fg));
+nm(:, :, 1) = mask;
+nm(:, :, 2) = mask;
+nm(:, :, 3) = mask;
+mask = uint8(nm);
+res = img_blend(bg, fg, mask);

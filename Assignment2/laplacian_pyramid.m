@@ -1,10 +1,12 @@
 function pyramid = laplacian_pyramid(img, levels)
-pyramid = cell(1,levels + 1);
-res = img;
+gauss_pyr = gaussian_pyramid(img, levels);
+pyramid = cell(1, levels + 1);
 for i = 1:levels
-    blur = imgaussfilt(res);
-    pyramid{i} = res - blur;
-    res = blur(1:2:end, 1:2:end, :);
+    upi = upsample(gauss_pyr{i+1},@cubic_interp);
+    rows = size(gauss_pyr{i}, 1);
+    cols = size(gauss_pyr{i}, 2);
+    upi = upi(1:rows, 1:cols, :);
+    pyramid{i} = gauss_pyr{i} - upi;
 end
-pyramid{levels + 1} = res;
+pyramid{end} = gauss_pyr{end};
 end
