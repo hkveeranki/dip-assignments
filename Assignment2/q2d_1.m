@@ -10,11 +10,11 @@ H5 = notch(200, 0 , n, m, D);
 H6 = notch(60, 0, n, m, D);
 filter = H1 .* H2 .* H3 .* H4 .* H5 .* H6;
 res = apply_filter_fft(img, filter);
-figure;imshow(uint8(img));
-figure;imshow(uint8(abs(res)));
+figure;imshow(uint8(img));title('Original Image');
+figure;imshow(uint8(abs(res)));title('Filtered Image')
 Fc = fftshift(fft2(img));
 Fcf = fftshift(fft2(res));
 S1=log(1+abs(Fc)); 
 S2=log(1+abs(Fcf));
-figure, imshow(S1,[])
-figure, imshow(S2,[])
+figure, imshow(S1,[]);title('Original image fft')
+figure, imshow(S2,[]);title('Filtered image fft')

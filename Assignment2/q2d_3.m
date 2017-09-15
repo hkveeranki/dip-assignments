@@ -22,11 +22,11 @@ res = img;
 res(:, :, 1) = abs(ri);
 res(:, :, 2) = abs(gi);
 res(:, :, 3) = abs(bi);
-figure;imshow(uint8(img));
-figure;imshow(uint8(abs(res)));
+figure;imshow(uint8(img));title('Original Image');
+figure;imshow(uint8(res));title('Filtered Image')
 Fc = fftshift(fft2(rgb2gray(img)));
 Fcf = fftshift(fft2(rgb2gray(res)));
 S1=log(1+abs(Fc)); 
 S2=log(1+abs(Fcf));
-figure, imshow(S1,[])
-figure, imshow(S2,[])
+figure, imshow(S1,[]);title('Original image fft')
+figure, imshow(S2,[]);title('Filtered image fft')
