@@ -8,7 +8,7 @@ m = size(padimg, 2);
 padimg = double(padimg);
 for i = 1 : n - win_size + 1
     for j = 1 : m - win_size + 1
-        temp = padimg(i:i+win_size - 1, j:j+win_size -1).*filter;
+        temp = padimg(i:i+win_size - 1, j:j+win_size -1) .* filter;
         res(i,j) = uint8(sum(temp(:)));
     end
 end

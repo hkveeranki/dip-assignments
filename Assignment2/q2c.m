@@ -1,4 +1,4 @@
-img = imread('data/other_images/lighthouse.png');
+img = imread('data/other_images/yellowlily.jpg');
 ri = img(:, :, 1);
 gi = img(:, :, 2);
 bi = img(:, :, 3);
@@ -12,5 +12,6 @@ res = img;
 res(:, :, 1) = rr;
 res(:, :, 2) = gr;
 res(:, :, 3) = br;
-figure;imshow(uint8(abs(img)));title('image');
-figure;imshow(uint8(abs(res)));title('Laplacian');
+res = abs(res);
+figure;imshow(uint8(img));title('image');
+figure;imshow(uint8(res));title('Laplacian');

@@ -4,7 +4,7 @@ pyramid = cell(1,levels + 1);
 res = img;
 pyramid{1} = res;
 for i = 1:levels
-    blur = apply_gauss_filter(res);
+    blur = apply_gauss_blur(res);
     res = blur(1:2:end, 1:2:end, :);
     pyramid{i+1} = res;
 end

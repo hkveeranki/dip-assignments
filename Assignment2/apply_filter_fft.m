@@ -6,7 +6,7 @@ m_init = size(img, 2);
 % pad with zeros
 img = padzero(img);
 img = double(img);
-trans = fft_2d(img);
+trans = fft2(img);
 % multiplication in fourier domain is convolution
 res = ifft2(ifftshift(fftshift(trans) .* filter));
 res = unpad(res, n_init, m_init);
