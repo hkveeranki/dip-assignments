@@ -1,7 +1,7 @@
 path = 'data\image_blending_with_laplacian_pyramid\';
-mask = imread(strcat(path,'example2\mask.png'));
-fg = imread(strcat(path,'example2\im1.jpg'));
-bg = imread(strcat(path,'example2\im2.jpg'));
+mask = imread(strcat(path,'example3\mask.png'));
+fg = imread(strcat(path,'example3\im1.png'));
+bg = imread(strcat(path,'example3\im2.png'));
 nm = zeros(size(fg));
 maxm = double(max(uint8(mask(:))));
 nm(:, :, 1) = mask / maxm;

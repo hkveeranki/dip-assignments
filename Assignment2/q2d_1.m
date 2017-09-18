@@ -16,5 +16,5 @@ Fc = fftshift(fft2(img));
 Fcf = fftshift(fft2(res));
 S1=log(1+abs(Fc)); 
 S2=log(1+abs(Fcf));
-figure, imshow(S1,[]);title('Original image fft')
-figure, imshow(S2,[]);title('Filtered image fft')
+figure, imshow(S1,[]);title('Original image fft');
+figure, imshow(S2,[]);title('Filtered image fft');

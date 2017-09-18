@@ -1,8 +1,8 @@
-img = rgb2gray(imread('data/sample.JPG'));
+img = imread('data/other_images/car1.jpg');
 n = size(img, 1);
 m = size(img, 2);
 % Parameters for filters
-cutoff = 30;
+cutoff = 35;
 power = 2;
 % Low pass filters
 ilpf = ideal_low_pass(cutoff, n, m);
@@ -24,6 +24,9 @@ figure;imshow(uint8(abs(img)));title('image');
 figure;imshow(uint8(abs(res1)));title('ideal low pass');
 figure;imshow(uint8(abs(res2)));title('butterworth low pass');
 figure;imshow(uint8(abs(res2)));title('gaussian low pass');
-figure;imshow(uint8(abs(res4)));title('ideal high pass');
-figure;imshow(uint8(abs(res5)));title('butterworth high pass');
-figure;imshow(uint8(abs(res6)));title('gaussian high pass');
+imwrite(uint8(abs(res1)),'ilp.jpg');
+imwrite(uint8(abs(res2)),'blp.jpg');
+imwrite(uint8(abs(res3)),'glp.jpg');
+imwrite(uint8(abs(res4)),'ihp.jpg');
+imwrite(uint8(abs(res5)),'bhp.jpg');
+imwrite(uint8(abs(res6)),'ghp.jpg');
