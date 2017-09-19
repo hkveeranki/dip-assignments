@@ -1,4 +1,4 @@
-img = imread('data/other_images/pears.png');
+img = imread('data/other_images/concordaerial.png');
 ri = img(:, :, 1);
 gi = img(:, :, 2);
 bi = img(:, :, 3);
